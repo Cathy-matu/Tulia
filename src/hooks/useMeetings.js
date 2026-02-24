@@ -3,24 +3,16 @@ import { INITIAL_MEETINGS } from '../constants/initialData';
 
 export function useMeetings() {
     const [meetings, setMeetings] = useState(INITIAL_MEETINGS);
-    const [activeRoles, setActiveRoles] = useState(new Set(['dir', 'teach', 'sup', 'admin']));
+    const [activeRole, setActiveRole] = useState(null);
     const [viewDate, setViewDate] = useState(new Date().toISOString().split('T')[0]);
 
     const toggleRole = (role) => {
-        setActiveRoles(prev => {
-            const next = new Set(prev);
-            if (next.has(role)) {
-                next.delete(role);
-            } else {
-                next.add(role);
-            }
-            return next;
-        });
+        setActiveRole(prev => prev === role ? null : role);
     };
 
     const filteredMeetings = useMemo(() => {
-        return meetings.filter(m => activeRoles.has(m.role));
-    }, [meetings, activeRoles]);
+        return meetings.filter(m => !activeRole || activeRole === m.role);
+    }, [meetings, activeRole]);
 
     const setStatus = (id, status) => {
         setMeetings(prev => prev.map(m =>
@@ -83,7 +75,7 @@ export function useMeetings() {
     return {
         meetings,
         filteredMeetings,
-        activeRoles,
+        activeRole,
         toggleRole,
         viewDate,
         setViewDate,
