@@ -42,7 +42,7 @@ export default function Dashboard() {
     };
 
     return (
-        <div className="flex flex-col md:flex-row h-screen w-full overflow-hidden bg-ivory text-navy font-sans relative">
+        <div className="flex flex-col md:flex-row h-screen w-full overflow-hidden bg-brown text-navy font-sans relative">
             {/* Left Column: Navigation & Filters */}
             <LeftSidebar
                 activeRole={activeRole}
@@ -57,13 +57,13 @@ export default function Dashboard() {
                     <div className="flex bg-navy/5 p-1 rounded-xl border border-navy/5">
                         <button
                             onClick={() => setCurrentView('day')}
-                            className={`px-5 py-2 rounded-lg text-[0.74rem] cursor-pointer font-bold transition-all shadow-sm ${currentView === 'day' ? 'bg-white text-navy shadow-premium' : 'text-navy/40 hover:text-navy/60 bg-transparent border-none shadow-none'}`}
+                            className={`px-5 py-2 rounded-lg text-[0.74rem] cursor-pointer font-bold transition-all shadow-sm ${currentView === 'day' ? 'bg-brown-surface text-navy shadow-premium' : 'text-navy/40 hover:text-navy/60 bg-transparent border-none shadow-none'}`}
                         >
                             Day
                         </button>
                         <button
                             onClick={() => setCurrentView('week')}
-                            className={`px-5 py-2 rounded-lg text-[0.74rem] cursor-pointer font-bold transition-all shadow-sm ${currentView === 'week' ? 'bg-white text-navy shadow-premium' : 'text-navy/40 hover:text-navy/60 bg-transparent border-none shadow-none'}`}
+                            className={`px-5 py-2 rounded-lg text-[0.74rem] cursor-pointer font-bold transition-all shadow-sm ${currentView === 'week' ? 'bg-brown-surface text-navy shadow-premium' : 'text-navy/40 hover:text-navy/60 bg-transparent border-none shadow-none'}`}
                         >
                             Week
                         </button>
@@ -75,13 +75,13 @@ export default function Dashboard() {
                                 setSelectedMeeting(null);
                                 setShowMobilePanel(true);
                             }}
-                            className="md:hidden bg-white border border-navy/5 w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer shadow-sm hover:border-gold hover:text-gold transition-all relative"
+                            className="md:hidden bg-brown-surface border border-navy/5 w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer shadow-sm hover:border-gold hover:text-gold transition-all relative"
                         >
                             <span className="text-xl">📋</span>
                         </button>
                         <button
                             onClick={() => setIsNotifOpen(!isNotifOpen)}
-                            className="bg-white border border-navy/5 w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer shadow-sm hover:border-gold hover:text-gold transition-all relative group"
+                            className="bg-brown-surface border border-navy/5 w-10 h-10 rounded-xl flex items-center justify-center cursor-pointer shadow-sm hover:border-gold hover:text-gold transition-all relative group"
                         >
                             <span className="text-xl grayscale group-hover:grayscale-0 transition-all duration-300">🔔</span>
                             {urgentAlertsCount > 0 && (
@@ -120,7 +120,7 @@ export default function Dashboard() {
 
                 {/* Overlay Notifications Panel */}
                 {isNotifOpen && (
-                    <div className="absolute top-[80px] right-8 bg-white/90 backdrop-blur-xl border border-white/60 rounded-2xl w-[360px] max-h-[calc(100vh-100px)] shadow-premium z-50 transition-all overflow-hidden flex flex-col animate-in fade-in slide-in-from-top-4">
+                    <div className="absolute top-[80px] right-8 bg-brown-surface/90 backdrop-blur-xl border border-white/60 rounded-2xl w-[360px] max-h-[calc(100vh-100px)] shadow-premium z-50 transition-all overflow-hidden flex flex-col animate-in fade-in slide-in-from-top-4">
                         <div className="px-5 py-4 border-b border-navy/5 flex justify-between items-center bg-navy/5 shrink-0">
                             <h3 className="font-mono text-[0.68rem] text-navy font-bold uppercase tracking-[2px]">Notifications</h3>
                             <button onClick={() => setIsNotifOpen(false)} className="text-navy/40 hover:text-navy transition-colors bg-transparent border-none cursor-pointer">✕</button>
@@ -132,7 +132,7 @@ export default function Dashboard() {
                                 alerts.map(alert => (
                                     <div
                                         key={alert.id}
-                                        className={`${alert.urgent ? 'bg-accent-orange/15 border-accent-orange/20 text-accent-orange' : 'bg-white border-navy/5 text-navy/70'} border rounded-xl p-4 text-[0.8rem] font-medium leading-relaxed shadow-sm`}
+                                        className={`${alert.urgent ? 'bg-accent-orange/15 border-accent-orange/20 text-accent-orange' : 'bg-brown-surface border-navy/5 text-navy/70'} border rounded-xl p-4 text-[0.8rem] font-medium leading-relaxed shadow-sm`}
                                     >
                                         <div className="flex gap-3">
                                             <span className="shrink-0">{alert.urgent ? '⚠️' : 'ℹ️'}</span>

@@ -6,8 +6,8 @@ export default function DayView({ meetings, viewDate, onSelectMeeting }) {
     const dayMeetings = meetings.filter(m => m.date === viewDate).sort((a, b) => a.start.localeCompare(b.start));
 
     return (
-        <div className="flex-1 overflow-y-auto bg-gray-50 flex flex-col">
-            <div className="bg-white border-b border-border px-5 py-3 flex items-center justify-between shadow-sm sticky top-0 z-10">
+        <div className="flex-1 overflow-y-auto bg-brown-surface/50 flex flex-col">
+            <div className="bg-brown-surface border-b border-border px-5 py-3 flex items-center justify-between shadow-sm sticky top-0 z-10">
                 <div className="font-playfair text-[1.05rem] font-bold text-gray-900">Today's Schedule</div>
                 <div className="flex items-center gap-1.5">
                     <button className="bg-surface-2 border-[1.5px] border-border rounded-lg text-gray-500 px-2.5 py-1 hover:border-gold hover:text-gold hover:bg-gold-bg transition-all text-[0.8rem]">‹</button>

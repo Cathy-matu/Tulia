@@ -6,13 +6,13 @@ export default function WeekView({ meetings, onSelectMeeting }) {
     const hours = Array.from({ length: 14 }, (_, i) => i + 7);
 
     return (
-        <div className="flex-1 flex flex-col overflow-hidden bg-ivory/30">
+        <div className="flex-1 flex flex-col overflow-hidden bg-brown/30">
             <div className="glass border-b border-navy/5 px-8 py-4 flex items-center justify-between sticky top-0 z-10 h-[64px]">
                 <div className="font-playfair text-[1.15rem] font-bold text-navy tracking-tight">Weekly Schedule</div>
                 <div className="flex items-center gap-2">
-                    <button className="bg-white border border-navy/5 rounded-xl text-navy/40 w-8 h-8 flex items-center justify-center hover:border-gold hover:text-gold transition-all text-[0.85rem] shadow-sm">‹</button>
+                    <button className="bg-brown-surface border border-navy/5 rounded-xl text-navy/40 w-8 h-8 flex items-center justify-center hover:border-gold hover:text-gold transition-all text-[0.85rem] shadow-sm">‹</button>
                     <span className="font-mono text-[0.72rem] text-navy/50 px-3 py-1 font-bold tracking-wider uppercase">Feb 23 – Mar 01</span>
-                    <button className="bg-white border border-navy/5 rounded-xl text-navy/40 w-8 h-8 flex items-center justify-center hover:border-gold hover:text-gold transition-all text-[0.85rem] shadow-sm">›</button>
+                    <button className="bg-brown-surface border border-navy/5 rounded-xl text-navy/40 w-8 h-8 flex items-center justify-center hover:border-gold hover:text-gold transition-all text-[0.85rem] shadow-sm">›</button>
                 </div>
             </div>
 
@@ -38,7 +38,7 @@ export default function WeekView({ meetings, onSelectMeeting }) {
                                 });
 
                                 return (
-                                    <div key={i} className="border-r border-navy/5 border-b border-navy/5 min-h-[60px] p-1 bg-transparent group hover:bg-white/40 transition-colors">
+                                    <div key={i} className="border-r border-navy/5 border-b border-navy/5 min-h-[60px] p-1 bg-transparent group hover:bg-brown-surface/40 transition-colors">
                                         {dayMeetings.map(meeting => (
                                             <div
                                                 key={meeting.id}

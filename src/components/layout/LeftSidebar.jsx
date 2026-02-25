@@ -7,7 +7,7 @@ export default function LeftSidebar({ activeRole, onToggleRole, viewDate }) {
     const currentMonth = today.toLocaleString('default', { month: 'long' });
 
     return (
-        <aside className="fixed bottom-0 left-0 right-0 h-[64px] md:relative md:h-full md:w-[80px] md:hover:w-[260px] w-full glass bg-white/90 md:bg-transparent backdrop-blur-xl border-t md:border-t-0 md:border-r border-navy/5 flex flex-row md:flex-col shrink-0 transition-all duration-300 group z-40 overflow-visible md:overflow-hidden justify-around md:justify-start px-2 md:px-0 shadow-[0_-4px_20px_-2px_rgba(26,34,54,0.08)] md:shadow-none">
+        <aside className="fixed bottom-0 left-0 right-0 h-[64px] md:relative md:h-full md:w-[80px] md:hover:w-[260px] w-full glass bg-brown-surface/90 md:bg-transparent backdrop-blur-xl border-t md:border-t-0 md:border-r border-navy/5 flex flex-row md:flex-col shrink-0 transition-all duration-300 group z-40 overflow-visible md:overflow-hidden justify-around md:justify-start px-2 md:px-0 shadow-[0_-4px_20px_-2px_rgba(26,34,54,0.08)] md:shadow-none">
             {/* Branding Header */}
             <div className="hidden md:flex h-[72px] items-center justify-center border-b border-navy/5 px-2 group-hover:px-6 group-hover:justify-start transition-all">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center text-white font-playfair font-bold text-xl shadow-premium shrink-0">
@@ -21,7 +21,7 @@ export default function LeftSidebar({ activeRole, onToggleRole, viewDate }) {
 
             {/* Mini Calendar (Visual Only) */}
             <div className="hidden md:flex py-6 flex-col items-center border-b border-navy/5 group-hover:px-6 transition-all">
-                <div className="w-12 h-12 rounded-2xl bg-white border border-navy/5 flex flex-col items-center justify-center shadow-sm group-hover:w-full group-hover:h-auto group-hover:py-3 transition-all">
+                <div className="w-12 h-12 rounded-2xl bg-brown-surface border border-navy/5 flex flex-col items-center justify-center shadow-sm group-hover:w-full group-hover:h-auto group-hover:py-3 transition-all">
                     <span className="text-[0.6rem] font-mono text-navy/40 uppercase font-bold group-hover:mb-1">{currentMonth.substring(0, 3)}</span>
                     <span className="text-xl font-bold text-navy leading-none">{currentDay}</span>
                     <span className="text-[0.65rem] font-bold text-navy mt-1 opacity-0 group-hover:opacity-100 hidden group-hover:block transition-all">{viewDate}</span>
@@ -45,10 +45,10 @@ export default function LeftSidebar({ activeRole, onToggleRole, viewDate }) {
                     };
 
                     const inactiveClassMap = {
-                        'dir': 'bg-white border-navy/5 text-navy/40 hover:border-gold/40 hover:text-gold',
-                        'teach': 'bg-white border-navy/5 text-navy/40 hover:border-accent-blue/40 hover:text-accent-blue',
-                        'sup': 'bg-white border-navy/5 text-navy/40 hover:border-accent-orange/40 hover:text-accent-orange',
-                        'admin': 'bg-white border-navy/5 text-navy/40 hover:border-accent-purple/40 hover:text-accent-purple',
+                        'dir': 'bg-brown-surface border-navy/5 text-navy/40 hover:border-gold/40 hover:text-gold',
+                        'teach': 'bg-brown-surface border-navy/5 text-navy/40 hover:border-accent-blue/40 hover:text-accent-blue',
+                        'sup': 'bg-brown-surface border-navy/5 text-navy/40 hover:border-accent-orange/40 hover:text-accent-orange',
+                        'admin': 'bg-brown-surface border-navy/5 text-navy/40 hover:border-accent-purple/40 hover:text-accent-purple',
                     };
 
                     const buttonClasses = isActive ? activeClassMap[role.className] : inactiveClassMap[role.className];

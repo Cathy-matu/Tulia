@@ -8,7 +8,7 @@ export default function RightPanel({ selectedMeeting, onStatusChange, hasConflic
         />
     );
 
-    const asideClasses = `fixed top-0 right-0 bottom-0 w-[85vw] max-w-[360px] md:relative md:w-[300px] z-50 md:z-auto bg-ivory md:bg-transparent border-l border-navy/5 glass flex flex-col overflow-hidden shrink-0 transition-transform duration-300 ${showMobilePanel ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}`;
+    const asideClasses = `fixed top-0 right-0 bottom-0 w-[85vw] max-w-[360px] md:relative md:w-[300px] z-50 md:z-auto bg-brown md:bg-transparent border-l border-navy/5 glass flex flex-col overflow-hidden shrink-0 transition-transform duration-300 ${showMobilePanel ? 'translate-x-0' : 'translate-x-full md:translate-x-0'}`;
 
     if (!selectedMeeting) {
         return (
@@ -16,7 +16,7 @@ export default function RightPanel({ selectedMeeting, onStatusChange, hasConflic
                 {mobileBackdrop}
                 <aside className={asideClasses}>
                     <div className="flex border-b border-navy/5 bg-navy/5 p-1 h-[48px] shrink-0">
-                        <div className="flex-1 rounded-lg flex items-center justify-center text-[0.64rem] font-mono text-navy border-none bg-white font-bold shadow-sm uppercase tracking-wider">Agenda</div>
+                        <div className="flex-1 rounded-lg flex items-center justify-center text-[0.64rem] font-mono text-navy border-none bg-brown-surface font-bold shadow-sm uppercase tracking-wider">Agenda</div>
                         <div className="flex-1 flex items-center justify-center text-[0.64rem] font-mono text-navy/30 uppercase tracking-wider font-bold">Details</div>
                     </div>
 
@@ -39,7 +39,7 @@ export default function RightPanel({ selectedMeeting, onStatusChange, hasConflic
                                         <div
                                             key={meeting.id}
                                             onClick={() => onSelectMeeting(meeting)}
-                                            className="relative glass border border-white/60 rounded-2xl p-4 cursor-pointer transition-all overflow-hidden shadow-sm hover:shadow-premium-hover hover:-translate-y-0.5 group bg-white/40"
+                                            className="relative glass border border-white/60 rounded-2xl p-4 cursor-pointer transition-all overflow-hidden shadow-sm hover:shadow-premium-hover hover:-translate-y-0.5 group bg-brown-surface/40"
                                         >
                                             <div className={`absolute left-0 top-0 bottom-0 w-1.5 rounded-l-2xl ${roleBgClass}`}></div>
                                             <div className="pl-1">
@@ -62,7 +62,7 @@ export default function RightPanel({ selectedMeeting, onStatusChange, hasConflic
                             <span className="text-[0.65rem] text-navy/30 font-medium leading-relaxed">View full details, logistics, or update status</span>
                         </div>
                     </div>
-                </aside>
+                </aside >
             </>
         );
     }
@@ -76,7 +76,7 @@ export default function RightPanel({ selectedMeeting, onStatusChange, hasConflic
             <aside className={asideClasses}>
                 <div className="flex border-b border-navy/5 bg-navy/5 p-1 h-[48px] shrink-0">
                     <div className="flex-1 flex items-center justify-center text-[0.64rem] font-mono text-navy/30 uppercase tracking-wider font-bold cursor-pointer hover:text-navy transition-all" onClick={() => onSelectMeeting(null)}>Agenda</div>
-                    <div className="flex-1 rounded-lg flex items-center justify-center text-[0.64rem] font-mono text-navy border-none bg-white font-bold shadow-sm uppercase tracking-wider">Details</div>
+                    <div className="flex-1 rounded-lg flex items-center justify-center text-[0.64rem] font-mono text-navy border-none bg-brown-surface font-bold shadow-sm uppercase tracking-wider">Details</div>
                 </div>
                 <div className="flex-1 p-6 overflow-y-auto space-y-6">
                     <div className="flex items-start justify-between gap-4">
@@ -118,7 +118,7 @@ export default function RightPanel({ selectedMeeting, onStatusChange, hasConflic
 
                     <div className="space-y-1">
                         <div className="text-[0.62rem] font-mono text-navy/30 uppercase tracking-[2px] font-bold">Notes & Agenda</div>
-                        <div className="text-[0.82rem] text-navy/70 font-medium leading-relaxed italic bg-white/40 p-4 rounded-2xl border border-navy/5">{selectedMeeting.notes || 'No notes for this session.'}</div>
+                        <div className="text-[0.82rem] text-navy/70 font-medium leading-relaxed italic bg-brown-surface/40 p-4 rounded-2xl border border-navy/5">{selectedMeeting.notes || 'No notes for this session.'}</div>
                     </div>
 
                     <div className="flex gap-3 pt-4">
