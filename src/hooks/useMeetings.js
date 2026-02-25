@@ -72,6 +72,10 @@ export function useMeetings() {
         setMeetings(prev => [...prev, { ...meeting, id: Date.now() }]);
     };
 
+    const updateMeeting = (id, updatedMeeting) => {
+        setMeetings(prev => prev.map(m => m.id === id ? { ...m, ...updatedMeeting } : m));
+    };
+
     return {
         meetings,
         filteredMeetings,
@@ -81,6 +85,7 @@ export function useMeetings() {
         setViewDate,
         setStatus,
         addMeeting,
+        updateMeeting,
         hasConflict,
         alerts
     };

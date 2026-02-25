@@ -44,9 +44,16 @@ export default function WeekView({ meetings, onSelectMeeting }) {
                                                 key={meeting.id}
                                                 onClick={() => onSelectMeeting(meeting)}
                                                 className={`
-                                                    rounded-xl p-2 text-[0.72rem] font-bold glass shadow-sm border border-white/60 cursor-pointer overflow-hidden truncate
-                                                    ${meeting.role === 'dir' ? 'bg-gold/15 text-gold-dark' : meeting.role === 'teach' ? 'bg-accent-blue/15 text-accent-blue' : meeting.role === 'sup' ? 'bg-accent-orange/15 text-accent-orange' : 'bg-accent-purple/15 text-accent-purple'}
-                                                    hover:shadow-premium-hover transition-all
+                                                    rounded-xl p-2 text-[0.72rem] font-bold shadow-sm border cursor-pointer overflow-hidden truncate transition-all hover:shadow-premium-hover
+                                                    ${meeting.status === 'done'
+                                                        ? '!bg-amber-100 !border-amber-300 opacity-60 text-amber-900'
+                                                        : meeting.color === 'blue' || (!meeting.color && meeting.role === 'teach')
+                                                            ? '!bg-blue-100 !border-blue-300 text-blue-900'
+                                                            : meeting.color === 'purple' || (!meeting.color && meeting.role === 'admin')
+                                                                ? '!bg-purple-100 !border-purple-300 text-purple-900'
+                                                                : meeting.color === 'yellow' || (!meeting.color && meeting.role === 'dir')
+                                                                    ? '!bg-yellow-100 !border-yellow-300 text-yellow-900'
+                                                                    : '!bg-orange-100 !border-orange-300 text-orange-900'}
                                                 `}
                                             >
                                                 {meeting.title}

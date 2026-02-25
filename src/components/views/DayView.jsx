@@ -31,9 +31,16 @@ export default function DayView({ meetings, viewDate, onSelectMeeting }) {
                                         key={meeting.id}
                                         onClick={() => onSelectMeeting(meeting)}
                                         className={`
-                                            rounded-2xl p-4 mb-2 cursor-pointer transition-all glass border border-white/60 shadow-sm hover:shadow-premium-hover hover:-translate-y-0.5 relative z-10
-                                            ${meeting.role === 'dir' ? 'hover:border-gold/30' : meeting.role === 'teach' ? 'hover:border-accent-blue/30' : meeting.role === 'sup' ? 'hover:border-accent-orange/30' : 'hover:border-accent-purple/30'}
-                                            ${meeting.status === 'done' ? 'opacity-50 grayscale-[0.2]' : ''}
+                                            rounded-2xl p-4 mb-2 cursor-pointer transition-all border shadow-sm hover:shadow-premium-hover hover:-translate-y-0.5 relative z-10
+                                            ${meeting.status === 'done'
+                                                ? '!bg-amber-100 !border-amber-300 opacity-60 grayscale-[0.2] text-amber-900'
+                                                : meeting.color === 'blue' || (!meeting.color && meeting.role === 'teach')
+                                                    ? '!bg-blue-100 !border-blue-300 text-blue-900'
+                                                    : meeting.color === 'purple' || (!meeting.color && meeting.role === 'admin')
+                                                        ? '!bg-purple-100 !border-purple-300 text-purple-900'
+                                                        : meeting.color === 'yellow' || (!meeting.color && meeting.role === 'dir')
+                                                            ? '!bg-yellow-100 !border-yellow-300 text-yellow-900'
+                                                            : '!bg-orange-100 !border-orange-300 text-orange-900'}
                                         `}
                                     >
                                         <div className={`text-[0.92rem] font-bold text-navy leading-tight ${meeting.status === 'done' ? 'line-through text-navy/40' : ''}`}>

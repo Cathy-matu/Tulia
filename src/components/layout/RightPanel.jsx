@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function RightPanel({ selectedMeeting, onStatusChange, hasConflict, upcomingMeetings = [], onSelectMeeting, showMobilePanel, onCloseMobilePanel }) {
+export default function RightPanel({ selectedMeeting, onStatusChange, hasConflict, upcomingMeetings = [], onSelectMeeting, showMobilePanel, onCloseMobilePanel, onEditMeeting }) {
     const mobileBackdrop = (
         <div
             className={`md:hidden fixed inset-0 bg-navy/20 backdrop-blur-sm z-40 transition-opacity ${showMobilePanel ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
@@ -79,7 +79,15 @@ export default function RightPanel({ selectedMeeting, onStatusChange, hasConflic
                     <div className="flex-1 rounded-lg flex items-center justify-center text-[0.64rem] font-mono text-navy border-none bg-white font-bold shadow-sm uppercase tracking-wider">Details</div>
                 </div>
                 <div className="flex-1 p-6 overflow-y-auto space-y-6">
-                    <h2 className="font-playfair text-[1.4rem] font-bold text-navy mb-1 leading-tight tracking-tight">{selectedMeeting.title}</h2>
+                    <div className="flex items-start justify-between gap-4">
+                        <h2 className="font-playfair text-[1.4rem] font-bold text-navy mb-1 leading-tight tracking-tight">{selectedMeeting.title}</h2>
+                        <button
+                            onClick={onEditMeeting}
+                            className="shrink-0 bg-navy/5 text-navy border-none rounded-xl p-2 text-[0.7rem] font-bold hover:bg-navy/10 transition-all cursor-pointer"
+                        >
+                            ✏️ Edit
+                        </button>
+                    </div>
 
                     {hasConflict && (
                         <div className="bg-accent-orange/15 border border-accent-orange/20 rounded-2xl p-4 text-[0.78rem] text-accent-orange font-bold flex gap-3 shadow-sm">

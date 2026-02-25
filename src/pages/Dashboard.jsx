@@ -16,6 +16,7 @@ export default function Dashboard() {
         setViewDate,
         setStatus,
         addMeeting,
+        updateMeeting,
         alerts,
         hasConflict
     } = useMeetings();
@@ -24,6 +25,7 @@ export default function Dashboard() {
     const [selectedMeeting, setSelectedMeeting] = useState(null);
     const [isNotifOpen, setIsNotifOpen] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [editingMeeting, setEditingMeeting] = useState(null);
     const [showMobilePanel, setShowMobilePanel] = useState(false);
 
     const urgentAlertsCount = alerts.filter(a => a.urgent).length;
@@ -89,7 +91,10 @@ export default function Dashboard() {
                             )}
                         </button>
                         <button
-                            onClick={() => setIsModalOpen(true)}
+                            onClick={() => {
+                                setEditingMeeting(null);
+                                setIsModalOpen(true);
+                            }}
                             className="bg-gold text-navy-light border-none rounded-xl px-5 py-2.5 text-[0.75rem] font-bold shadow-premium hover:shadow-premium-hover hover:-translate-y-0.5 transition-all"
                         >
                             + Schedule
@@ -148,6 +153,10 @@ export default function Dashboard() {
                 hasConflict={selectedMeeting ? hasConflict(selectedMeeting, filteredMeetings) : false}
                 upcomingMeetings={filteredMeetings.filter(m => m.status === 'pending')}
                 onSelectMeeting={handleSelectMeeting}
+                onEditMeeting={() => {
+                    setEditingMeeting(selectedMeeting);
+                    setIsModalOpen(true);
+                }}
                 showMobilePanel={showMobilePanel}
                 onCloseMobilePanel={handleClosePanel}
             />
@@ -155,8 +164,20 @@ export default function Dashboard() {
             {/* Modals */}
             <ScheduleModal
                 isOpen={isModalOpen}
-                onClose={() => setIsModalOpen(false)}
-                onSave={addMeeting}
+                onClose={() => {
+                    setIsModalOpen(false);
+                    setEditingMeeting(null);
+                }}
+                onSave={(m) => {
+                    if (editingMeeting) {
+                        updateMeeting(editingMeeting.id, m);
+                    } else {
+                        addMeeting(m);
+                    }
+                    setIsModalOpen(false);
+                    setEditingMeeting(null);
+                }}
+                meeting={editingMeeting}
             />
         </div>
     );
