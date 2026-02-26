@@ -109,6 +109,7 @@ export default function Dashboard() {
                             meetings={filteredMeetings}
                             viewDate={viewDate}
                             onSelectMeeting={handleSelectMeeting}
+                            setViewDate={setViewDate}
                         />
                     ) : (
                         <WeekView
@@ -178,6 +179,7 @@ export default function Dashboard() {
                     setEditingMeeting(null);
                 }}
                 meeting={editingMeeting}
+                viewDate={viewDate}
             />
         </div>
     );

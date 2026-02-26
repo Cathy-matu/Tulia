@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../common/Modal';
 
-export default function ScheduleModal({ isOpen, onClose, onSave, meeting }) {
+export default function ScheduleModal({ isOpen, onClose, onSave, meeting, viewDate }) {
+    const getLocalDateStr = () => {
+        const d = new Date();
+        d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+        return d.toISOString().split('T')[0];
+    };
+    const initialDate = viewDate || getLocalDateStr();
+
     const [formData, setFormData] = useState({
         title: '',
         role: 'dir',
-        date: new Date().toISOString().split('T')[0],
+        date: initialDate,
         start: '09:00',
         end: '10:00',
         location: '',
@@ -23,7 +30,7 @@ export default function ScheduleModal({ isOpen, onClose, onSave, meeting }) {
                 setFormData({
                     title: '',
                     role: 'dir',
-                    date: new Date().toISOString().split('T')[0],
+                    date: initialDate,
                     start: '09:00',
                     end: '10:00',
                     location: '',
@@ -34,7 +41,7 @@ export default function ScheduleModal({ isOpen, onClose, onSave, meeting }) {
                 });
             }
         }
-    }, [isOpen, meeting]);
+    }, [isOpen, meeting, initialDate]);
 
     const handleSave = () => {
         onSave({

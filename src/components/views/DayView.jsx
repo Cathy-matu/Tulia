@@ -1,19 +1,37 @@
 import React from 'react';
 
-export default function DayView({ meetings, viewDate, onSelectMeeting }) {
+export default function DayView({ meetings, viewDate, onSelectMeeting, setViewDate }) {
     const hours = Array.from({ length: 14 }, (_, i) => i + 7); // 7 AM to 8 PM
 
     const dayMeetings = meetings.filter(m => m.date === viewDate).sort((a, b) => a.start.localeCompare(b.start));
+
+    const handlePrevDay = () => {
+        const d = new Date(viewDate);
+        d.setDate(d.getDate() - 1);
+        setViewDate(d.toISOString().split('T')[0]);
+    };
+
+    const handleNextDay = () => {
+        const d = new Date(viewDate);
+        d.setDate(d.getDate() + 1);
+        setViewDate(d.toISOString().split('T')[0]);
+    };
+
+    const handleToday = () => {
+        const d = new Date();
+        d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+        setViewDate(d.toISOString().split('T')[0]);
+    };
 
     return (
         <div className="flex-1 overflow-y-auto bg-brown-surface/50 flex flex-col">
             <div className="bg-brown-surface border-b border-border px-5 py-3 flex items-center justify-between shadow-sm sticky top-0 z-10">
                 <div className="font-playfair text-[1.05rem] font-bold text-gray-900">Today's Schedule</div>
                 <div className="flex items-center gap-1.5">
-                    <button className="bg-surface-2 border-[1.5px] border-border rounded-lg text-gray-500 px-2.5 py-1 hover:border-gold hover:text-gold hover:bg-gold-bg transition-all text-[0.8rem]">‹</button>
+                    <button onClick={handlePrevDay} className="bg-surface-2 border-[1.5px] border-border rounded-lg text-gray-500 px-2.5 py-1 hover:border-gold hover:text-gold hover:bg-gold-bg transition-all text-[0.8rem]">‹</button>
                     <span className="font-mono text-[0.68rem] text-gray-500 px-2 py-1">{viewDate}</span>
-                    <button className="bg-surface-2 border-[1.5px] border-border rounded-lg text-gray-500 px-2.5 py-1 hover:border-gold hover:text-gold hover:bg-gold-bg transition-all text-[0.8rem]">›</button>
-                    <button className="bg-surface-2 border-[1.5px] border-border rounded-lg text-gray-500 px-2 py-1 hover:border-gold hover:text-gold hover:bg-gold-bg transition-all text-[0.62rem] ml-1">Today</button>
+                    <button onClick={handleNextDay} className="bg-surface-2 border-[1.5px] border-border rounded-lg text-gray-500 px-2.5 py-1 hover:border-gold hover:text-gold hover:bg-gold-bg transition-all text-[0.8rem]">›</button>
+                    <button onClick={handleToday} className="bg-surface-2 border-[1.5px] border-border rounded-lg text-gray-500 px-2 py-1 hover:border-gold hover:text-gold hover:bg-gold-bg transition-all text-[0.62rem] ml-1">Today</button>
                 </div>
             </div>
 

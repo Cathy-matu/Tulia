@@ -4,7 +4,12 @@ import { INITIAL_MEETINGS } from '../constants/initialData';
 export function useMeetings() {
     const [meetings, setMeetings] = useState(INITIAL_MEETINGS);
     const [activeRole, setActiveRole] = useState(null);
-    const [viewDate, setViewDate] = useState(new Date().toISOString().split('T')[0]);
+    const getLocalDateStr = () => {
+        const d = new Date();
+        d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+        return d.toISOString().split('T')[0];
+    };
+    const [viewDate, setViewDate] = useState(getLocalDateStr());
 
     const toggleRole = (role) => {
         setActiveRole(prev => prev === role ? null : role);
